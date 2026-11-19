@@ -18,6 +18,15 @@ export function todayLocalISO(now = new Date()) {
   return `${y}-${m}-${d}`;
 }
 
+/** Comprueba fechas reales: por ejemplo, 31 de febrero no existe. */
+export function isRealISODate(value) {
+  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(value || "")) return false;
+  const [year, month, day] = value.split("-").map(Number);
+  const d = new Date(0);
+  d.setFullYear(year, month - 1, day);
+  return d.getFullYear() === year && d.getMonth() === month - 1 && d.getDate() === day;
+}
+
 export function validateOrder(data, lines, today = todayLocalISO()) {
   const errors = {};
   if (!Array.isArray(lines) || lines.length === 0) errors.cart = "Agrega al menos un boli a tu pedido.";
@@ -25,7 +34,7 @@ export function validateOrder(data, lines, today = todayLocalISO()) {
   if (!/^[\d\s()+-]{7,20}$/.test(data.phone?.trim() || "") || (data.phone.match(/\d/g) || []).length < 7) {
     errors.phone = "Escribe un número de contacto válido.";
   }
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(data.date || "") || data.date < today || Number.isNaN(new Date(`${data.date}T12:00:00`).getTime())) {
+  if (!isRealISODate(data.date) || data.date < today) {
     errors.date = "Elige una fecha válida de hoy en adelante.";
   }
   if (!Object.hasOwn(DELIVERY_LABELS, data.delivery)) errors.delivery = "Selecciona una modalidad.";
