@@ -2,7 +2,7 @@
  * Catálogo real de Capi Bolis, comunicado por el negocio.
  * Precios 2026: $2.500 por unidad; si el carrito supera 12 bolis,
  * TODAS las unidades del pedido cuestan $2.000 cada una.
- * Las ilustraciones son referenciales (no son fotografías reales).
+ * Maracuyá tiene una foto real del emprendimiento; los demás usan ilustraciones referenciales.
  */
 export const SHOP = Object.freeze({
   brand: "Capi Bolis",
@@ -16,7 +16,7 @@ export const SHOP = Object.freeze({
 });
 
 export const PRODUCTS = Object.freeze([
-  { id: "maracuya", name: "Maracuyá", category: "frutales", description: "Tropical, refrescante y con su toque ácido.", price: SHOP.retailPrice, color: "#EBC86D", pale: "#FFF5D7", fruit: "☀️", tag: "Tropical" },
+  { id: "maracuya", name: "Maracuyá", category: "frutales", description: "Tropical, refrescante y con su toque ácido.", price: SHOP.retailPrice, color: "#EBC86D", pale: "#FFF5D7", fruit: "☀️", tag: "Tropical", image: "./assets/images/maracuya-real.webp", imageAlt: "Foto real de varios bolis de maracuyá de Capi Bolis" },
   { id: "oreo", name: "Oreo", category: "cremosos", description: "Cremoso, con sabor a galleta de chocolate.", price: SHOP.retailPrice, color: "#9F8F93", pale: "#F0E9EC", fruit: "🍪", tag: "Galleta" },
   { id: "capuccino", name: "Capuccino", category: "cremosos", description: "Un antojo suave con sabor a café.", price: SHOP.retailPrice, color: "#B98E78", pale: "#EFE3DA", fruit: "☕", tag: "Café" },
   { id: "pie-limon", name: "Pie de limón", category: "cremosos", description: "Dulce, cremoso y con toque cítrico.", price: SHOP.retailPrice, color: "#D7CE83", pale: "#F8F5DB", fruit: "🍋", tag: "Especial" },

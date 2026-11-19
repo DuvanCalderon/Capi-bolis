@@ -86,7 +86,7 @@ No necesitas instalar dependencias.
 
 ## Identidad visual
 
-Referencia: aviso de Canva «Bolis Gourmet». Se reutilizaron **#FFC8C5** (rosa) y **#7FC6C2** (verde agua), con una paleta crema y tipografía suave. Las ilustraciones SVG de los bolis son originales (no fotografías de producto). Los cuatro diseños de capibara creados para la marca están incorporados como archivos WebP optimizados en `assets/branding/` y repartidos entre encabezado, portada, Nosotros y pie de página.
+Referencia: aviso de Canva «Bolis Gourmet». Se reutilizaron **#FFC8C5** (rosa) y **#7FC6C2** (verde agua), con una paleta crema y tipografía suave. La tarjeta de **maracuyá** muestra una **foto real del producto**, aportada por el negocio (`assets/images/maracuya-real.webp`, versión optimizada WebP). Los otros bolis mantienen ilustraciones SVG referenciales. Los cuatro diseños de capibara creados para la marca están incorporados como archivos WebP optimizados en `assets/branding/` y repartidos entre encabezado, portada, Nosotros y pie de página.
 
 - [Documentación del proyecto en Notion](https://app.notion.com/p/40760fb53673804181edc620cca28d86)
 - [Aviso original en Canva](https://www.canva.com/design/DAGOnTjzZAI/P7DlqAO2JHBAOiMWFeo-zA/edit)

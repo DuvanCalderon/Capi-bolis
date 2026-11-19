@@ -322,3 +322,9 @@ dialog::backdrop{background:#23352dcc;backdrop-filter:blur(3px)}
 .cart-savings strong{white-space:nowrap}
 @media(max-width:800px){.hero-capi-mascot{left:2%;top:22px;width:115px;height:115px}.about-capybara{width:160px}.about-capybara-seal img{width:120px;height:120px}}
 @media(max-width:550px){.brand-logo{width:39px;height:39px}.hero-capi-mascot{left:2px;top:8px;width:85px;height:85px;border-width:3px}.about-capybara{width:125px;margin-bottom:10px}.about-capybara-seal{display:flex;align-items:start;transform:none}.about-capybara-seal img{width:94px;height:94px}.about-capybara-seal small{font-size:12px}}
+
+/* Fotografía real de Maracuyá; mostramos el empaque completo sin recortar. */
+.product-image.has-photo{background:#f4f1e8}
+.product-image.has-photo::before,.product-image.has-photo::after{display:none}
+.product-photo{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+.product-image.has-photo .product-tag{background:rgba(255,250,246,.93)}
