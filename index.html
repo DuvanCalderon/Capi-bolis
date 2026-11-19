@@ -19,7 +19,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#inicio" aria-label="Capi Bolis, ir al inicio">
-        <span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 42 42"><path d="M8 22C8 11 17 5 24 7c7 1 12 8 10 17-2 9-9 13-17 11C10 33 8 29 8 22Z" fill="#7FC6C2"/><path d="M13 16c-2 8 1 14 7 16 6 2 10-4 9-10-1-5-5-10-9-10-3 0-6 2-7 4Z" fill="#fff"/><circle cx="21" cy="19" r="2" fill="#234541"/><path d="M24 21l5 2-5 3Z" fill="#ED9C85"/><path d="M15 34l-2 4m11-4 2 4" stroke="#ED9C85" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+        <img class="brand-logo" src="./assets/branding/logo-capi-minimal.webp" alt="" width="47" height="47" decoding="async" />
         <span class="brand-wordmark">capi<span>.</span><small>BOLIS</small></span>
       </a>
       <nav class="desktop-nav" aria-label="Navegación principal">
@@ -44,7 +44,8 @@
           </div>
           <div class="hero-caption"><span class="caption-sun" aria-hidden="true">☀</span> <span>Hechos para disfrutar, compartir y sonreír.</span></div>
         </div>
-        <div class="hero-scene" aria-label="Ilustración de tres bolis gourmet en tonos frutales">
+        <div class="hero-scene" aria-label="Ilustración de tres bolis gourmet acompañados por la mascota capibara de Capi Bolis">
+          <img class="hero-capi-mascot" src="./assets/branding/logo-capi-mascota.webp" alt="Capibara alegre, mascota de Capi Bolis" width="164" height="164" decoding="async" fetchpriority="high" />
           <div class="scene-sticker sticker-top">Pequeños<br><strong>momentos felices</strong><span>✺</span></div>
           <div class="scene-halo"></div>
           <svg class="hero-bolis" viewBox="0 0 600 540" role="img" aria-label="Tres bolis ilustrados de colores rosado, amarillo y verde agua">
@@ -87,9 +88,9 @@
       <div class="container">
         <div class="section-heading shop-heading">
           <div><span class="section-kicker">01 / EL CATÁLOGO</span><h2 id="flavors-title">Sabores para<br><em>enamorarse.</em></h2><p>Arma tu mezcla favorita. Un boli, dos o los que se te antojen.</p></div>
-          <div class="price-note"><span class="note-icon" aria-hidden="true">✦</span><span><strong>$3.000 COP / unidad</strong><small>Precio de referencia del aviso. Confirmar antes de comprar.</small></span></div>
+          <div class="price-note"><span class="note-icon" aria-hidden="true">✦</span><span><strong>$2.500 COP por unidad</strong><small>Más de 12 bolis (13+): $2.000 c/u en todo tu pedido.</small></span></div>
         </div>
-        <div class="demo-banner" role="note"><span aria-hidden="true">✺</span><p><strong>Catálogo de muestra.</strong> Los sabores ilustrados y su disponibilidad aún deben validarse con Capi Bolis. Esta es una primera versión de la web.</p></div>
+        <div class="demo-banner" role="note"><span aria-hidden="true">✺</span><p><strong>¡Estos son nuestros sabores!</strong> Puedes combinarlos libremente. Las ilustraciones son referenciales; la disponibilidad se confirma por WhatsApp.</p></div>
         <div class="catalog-layout">
           <div class="catalog-main">
             <div class="catalog-toolbar">
@@ -106,7 +107,9 @@
             <div class="cart-heading"><span class="cart-icon" aria-hidden="true">♡</span><div><span class="cart-overline">TU ANTOJO, A TU GUSTO</span><h3>Mi cajita de bolis</h3></div></div>
             <div class="cart-empty" id="cart-empty"><span class="empty-illustration" aria-hidden="true">🍧</span><p>Aquí empieza algo rico.</p><small>Agrega tus sabores favoritos para armar tu pedido.</small></div>
             <ul class="cart-items" id="cart-items" aria-live="polite"></ul>
+            <div class="wholesale-perk" aria-live="polite"><p id="wholesale-status">Lleva 13 bolis o más para disfrutar el precio al por mayor.</p><progress id="wholesale-progress" max="13" value="0" aria-label="Progreso para el precio al por mayor"></progress></div>
             <div class="cart-divider"></div>
+            <div class="cart-savings" id="wholesale-savings" hidden><span>Descuento al por mayor</span><strong id="wholesale-savings-amount">−$ 0</strong></div>
             <div class="cart-total"><span>Total estimado</span><strong data-cart-total>$ 0</strong></div>
             <p class="cart-disclaimer">El valor final y la disponibilidad se confirman por WhatsApp.</p>
             <a href="#pedido" class="button button-dark button-full">Continuar pedido <span aria-hidden="true">→</span></a>
@@ -149,7 +152,7 @@
           <div class="field" id="address-group"><label for="address">Dirección de entrega *</label><input id="address" name="address" type="text" autocomplete="street-address" minlength="6" maxlength="160" placeholder="Dirección, barrio y referencias" required /><span class="field-hint">La cobertura y el costo del domicilio se consultan con el negocio.</span><span class="field-error" data-error-for="address"></span></div>
           <div class="field"><label for="payment">¿Cómo prefieres pagar? *</label><select name="payment" id="payment" required><option value="por_acordar">Acordar con el negocio</option><option value="efectivo">Efectivo (por confirmar)</option><option value="transferencia">Transferencia (por confirmar)</option></select><span class="field-hint">Los medios de pago son orientativos; la web no procesa pagos.</span><span class="field-error" data-error-for="payment"></span></div>
           <div class="field"><label for="notes">¿Alguna indicación especial? <span class="optional">(opcional)</span></label><textarea name="notes" id="notes" maxlength="240" rows="3" placeholder="Cuéntanos lo que quieras agregar..."></textarea></div>
-          <div class="checkout-totals"><span><span data-cart-count>0</span> bolis seleccionados</span><strong data-cart-total>$ 0</strong></div>
+          <div class="checkout-totals"><span><span data-cart-count>0</span> bolis · <span id="checkout-unit-price">$ 2.500</span> c/u</span><strong data-cart-total>$ 0</strong></div>
           <button class="button button-dark button-full submit-order" type="submit">Revisar pedido para WhatsApp <span aria-hidden="true">↗</span></button>
           <p class="privacy-note"><span aria-hidden="true">🔒</span> Tus datos solo se usan para preparar el mensaje. No se guardan en esta página. Al continuar, decides si quieres enviarlos por WhatsApp.</p>
         </form>
@@ -158,14 +161,14 @@
 
     <section class="about-section" id="nosotros" aria-labelledby="about-title">
       <div class="container about-grid">
-        <div class="about-flower" aria-hidden="true">✿</div>
+        <img class="about-capybara" src="./assets/branding/logo-capi-natural.webp" alt="Logo de capibara sonriente con hojas y sol" width="210" height="210" loading="lazy" decoding="async" />
         <div><span class="section-kicker">UN POQUITO SOBRE NOSOTROS</span><h2 id="about-title">Lo simple también<br>puede ser <em>delicioso.</em></h2><p>Capi Bolis nace del gusto por esos antojitos caseros que alegran el día. Queremos que elegir tu próximo boli sea tan bonito como disfrutarlo.</p><span class="about-signature">con cariño, Capi ♡</span></div>
-        <div class="about-doodle" aria-hidden="true"><span>☺</span><small>dulces momentos</small></div>
+        <div class="about-capybara-seal"><img src="./assets/branding/logo-capi-emblema.webp" alt="Emblema botánico de capibara" width="160" height="160" loading="lazy" decoding="async" /><small>dulces momentos</small></div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a href="#inicio" class="brand" aria-label="Capi Bolis, volver al inicio"><span class="brand-symbol" aria-hidden="true">✳</span><span class="brand-wordmark">capi<span>.</span><small>BOLIS</small></span></a><p>Momentos ricos,<br>recuerdos bonitos. ♡</p></div><div class="footer-column"><h3>Explora</h3><a href="#sabores">Nuestros sabores</a><a href="#como-pedir">Cómo pedir</a><a href="#pedido">Arma tu pedido</a></div><div class="footer-column"><h3>Hablemos</h3><a href="tel:+573185500770" id="primary-phone">318 550 0770</a><a href="tel:+573224805443" id="secondary-phone">322 480 5443</a><small>Números del aviso original. Confirma el canal de pedidos antes de publicar.</small></div></div>
+  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a href="#inicio" class="brand" aria-label="Capi Bolis, volver al inicio"><img class="brand-logo" src="./assets/branding/logo-capi-minimal.webp" alt="" width="47" height="47" loading="lazy" decoding="async" /><span class="brand-wordmark">capi<span>.</span><small>BOLIS</small></span></a><p>Momentos ricos,<br>recuerdos bonitos. ♡</p></div><div class="footer-column"><h3>Explora</h3><a href="#sabores">Nuestros sabores</a><a href="#como-pedir">Cómo pedir</a><a href="#pedido">Arma tu pedido</a></div><div class="footer-column"><h3>Hablemos</h3><a href="tel:+573185500770" id="primary-phone">318 550 0770</a><a href="tel:+573224805443" id="secondary-phone">322 480 5443</a><small>Números del aviso original. Confirma el canal de pedidos antes de publicar.</small></div></div>
   <div class="container footer-bottom"><span>© <span id="year">2026</span> Capi Bolis · Hecho con cariño.</span><span>Prototipo v1 · Catálogo y condiciones por validar.</span></div></footer>
 
   <a class="mobile-cart-bar" href="#pedido" aria-label="Ir a revisar mi pedido"><span><span class="mobile-bar-badge" data-cart-count>0</span> Ver mi pedido</span><strong data-cart-total>$ 0</strong><span aria-hidden="true">→</span></a>

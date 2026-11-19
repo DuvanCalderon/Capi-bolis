@@ -1,4 +1,6 @@
-/** Funciones puras: sin DOM y fáciles de probar. */
+import { SHOP } from "./products.js";
+
+/** Funciones puras: la misma regla de precio rige carrito y mensaje. */
 export function clampQuantity(value, max = 99) {
   const number = Number(value);
   if (!Number.isInteger(number) || !Number.isFinite(number)) return 0;
@@ -14,21 +16,41 @@ export function changeQuantity(cart, productId, delta, products, max = 99) {
   return next;
 }
 
+/** Más de 12 unidades entre TODOS los sabores: precio mayorista en TODO el pedido. */
 export function getCartLines(cart, products) {
-  return products.flatMap((product) => {
-    const quantity = clampQuantity(cart[product.id] || 0);
-    return quantity > 0
-      ? [{ ...product, quantity, subtotal: quantity * product.price }]
-      : [];
+  const unpricedLines = products.flatMap((product) => {
+    const quantity = clampQuantity(cart[product.id] || 0, SHOP.maxPerFlavor);
+    return quantity > 0 ? [{ ...product, quantity }] : [];
+  });
+  const count = unpricedLines.reduce((sum, item) => sum + item.quantity, 0);
+  const isWholesale = count > SHOP.wholesaleThreshold;
+  return unpricedLines.map((item) => {
+    const unitPrice = isWholesale ? SHOP.wholesalePrice : item.price;
+    return {
+      ...item,
+      regularPrice: item.price,
+      price: unitPrice,
+      subtotal: item.quantity * unitPrice,
+      regularSubtotal: item.quantity * item.price,
+    };
   });
 }
 
 export function getCartTotals(cart, products) {
   const lines = getCartLines(cart, products);
+  const count = lines.reduce((sum, item) => sum + item.quantity, 0);
+  const total = lines.reduce((sum, item) => sum + item.subtotal, 0);
+  const regularTotal = lines.reduce((sum, item) => sum + item.regularSubtotal, 0);
+  const isWholesale = count > SHOP.wholesaleThreshold;
   return {
     lines,
-    count: lines.reduce((total, item) => total + item.quantity, 0),
-    total: lines.reduce((total, item) => total + item.subtotal, 0),
+    count,
+    total,
+    regularTotal,
+    savings: regularTotal - total,
+    isWholesale,
+    unitPrice: isWholesale ? SHOP.wholesalePrice : SHOP.retailPrice,
+    remainingToWholesale: isWholesale ? 0 : Math.max(0, SHOP.wholesaleThreshold + 1 - count),
   };
 }
 

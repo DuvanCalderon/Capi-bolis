@@ -65,7 +65,7 @@ function renderCatalog() {
 }
 
 function renderCart() {
-  const { lines, count, total } = getCartTotals(cart, PRODUCTS);
+  const { lines, count, total, isWholesale, savings, remainingToWholesale, unitPrice } = getCartTotals(cart, PRODUCTS);
   cartEmpty.hidden = lines.length > 0;
   cartItems.innerHTML = lines.map((item) => `<li class="cart-line">
     <span class="cart-dot" style="background:${item.color}"></span>
@@ -75,6 +75,18 @@ function renderCart() {
   </li>`).join("");
   cartCount.forEach((el) => { el.textContent = count; });
   cartAmount.forEach((el) => { el.textContent = formatCOP(total); });
+  const status = document.querySelector("#wholesale-status");
+  status.textContent = isWholesale
+    ? `¡Precio al por mayor aplicado! ${formatCOP(unitPrice)} por boli · Ahorras ${formatCOP(savings)}.`
+    : count === 0
+      ? `Lleva 13 bolis o más y cada uno te cuesta ${formatCOP(SHOP.wholesalePrice)}.`
+      : `Agrega ${remainingToWholesale} boli${remainingToWholesale === 1 ? "" : "s"} más para pagar ${formatCOP(SHOP.wholesalePrice)} por unidad en todo el pedido.`;
+  status.classList.toggle("is-wholesale", isWholesale);
+  document.querySelector("#wholesale-progress").value = Math.min(count, SHOP.wholesaleThreshold + 1);
+  const savingsRow = document.querySelector("#wholesale-savings");
+  savingsRow.hidden = !isWholesale;
+  document.querySelector("#wholesale-savings-amount").textContent = `−${formatCOP(savings)}`;
+  document.querySelector("#checkout-unit-price").textContent = formatCOP(unitPrice);
   document.querySelector("#cart-summary").setAttribute("aria-label", `Tu pedido: ${count} bolis, ${formatCOP(total)}`);
 }
 

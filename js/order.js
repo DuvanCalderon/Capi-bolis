@@ -1,4 +1,5 @@
 import { formatCOP } from "./cart.js";
+import { SHOP } from "./products.js";
 
 export const PAYMENT_LABELS = Object.freeze({
   por_acordar: "Por acordar con el negocio",
@@ -49,6 +50,10 @@ export function buildOrderMessage(lines, data, total) {
   const rows = lines.map((item) => `• ${item.name}: ${item.quantity} × ${formatCOP(item.price)} = ${formatCOP(item.subtotal)}`);
   const delivery = DELIVERY_LABELS[data.delivery] || "Por confirmar";
   const payment = PAYMENT_LABELS[data.payment] || "Por acordar";
+  const count = lines.reduce((sum, item) => sum + item.quantity, 0);
+  const wholesale = count > SHOP.wholesaleThreshold;
+  const unitPrice = wholesale ? SHOP.wholesalePrice : SHOP.retailPrice;
+  const savings = wholesale ? count * (SHOP.retailPrice - SHOP.wholesalePrice) : 0;
   return [
     "🍧 *¡Hola, Capi Bolis!*",
     "Quisiera consultar disponibilidad para este pedido:",
@@ -56,7 +61,10 @@ export function buildOrderMessage(lines, data, total) {
     "*Mis bolis:*",
     ...rows,
     "",
-    `*Unidades:* ${lines.reduce((sum, item) => sum + item.quantity, 0)}`,
+    `*Unidades:* ${count}`,
+    `*Tarifa:* ${wholesale ? "Al por mayor (más de 12 bolis)" : "Precio por unidad (hasta 12 bolis)"}`,
+    `*Precio por unidad:* ${formatCOP(unitPrice)}`,
+    ...(wholesale ? [`*Ahorro por mayor:* ${formatCOP(savings)}`] : []),
     `*Total estimado:* ${formatCOP(total)}`,
     "",
     "*Mis datos:*",

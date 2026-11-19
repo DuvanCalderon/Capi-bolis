@@ -1,13 +1,13 @@
-# 🍧 Capi Bolis — sitio web (MVP v1)
+# 🍧 Capi Bolis — sitio web (MVP v2)
 
 Primera versión de una web de **bolis gourmet caseros** con catálogo interactivo y preparación de pedidos mediante WhatsApp. Diseñada con una estética suave y minimalista.
 
-> ⚠️ **Prototipo:** el catálogo, los sabores, las condiciones de entrega y los medios de pago están pendientes de aprobación. Antes de compartirlo con clientes, valida la información del negocio.
+> ⚠️ **Prototipo:** los **7 sabores y los precios** fueron actualizados con información del negocio; las condiciones de entrega, los medios de pago, las fotografías y el canal oficial de WhatsApp todavía deben confirmarse. Antes de compartirlo con clientes, valida la información del negocio.
 
 ## Qué puede hacer
 
-- Explorar y filtrar 6 **sabores de ejemplo** (frutales y cremosos).
-- Agregar/quitar unidades por sabor; ver subtotales, cantidades y total estimado.
+- Explorar y filtrar 7 sabores confirmados: maracuyá, Oreo, capuccino, pie de limón, arequipe, mango biche y fresa.
+- Agregar/quitar unidades por sabor; ver subtotales, cantidades, total y ahorro mayorista.\n- **Precios:** 1 a 12 bolis = **$2.500 COP por unidad**. **13 o más** bolis **sumando todos los sabores** = **$2.000 COP por unidad** para **TODAS las unidades del pedido**.
 - Indicar nombre, contacto, fecha solicitada, domicilio o recogida y pago preferido.
 - Exigir dirección solo si se elige domicilio.
 - Validar carrito vacío, cantidades, teléfono, nombre y fechas.
@@ -66,8 +66,8 @@ No necesitas instalar dependencias.
 
 - `SHOP.whatsapp`: número de WhatsApp de pedidos en formato internacional **57XXXXXXXXXX**. Actualmente `573185500770`, obtenido del aviso original, **no confirmado** como canal de pedidos.
 - `SHOP.alternatePhone`: teléfono secundario del aviso.
-- `PRODUCTS`: nombres, categorías, descripciones, colores y precios. Los **6 sabores son demostrativos**, no una afirmación de disponibilidad.
-- El precio utilizado es **$3.000 COP** por unidad, el que figura en el aviso histórico de Canva; actualizar si cambió.
+- `PRODUCTS`: sabores confirmados por el negocio; la disponibilidad y las fotos deben confirmarse.\n- `SHOP.retailPrice`, `SHOP.wholesalePrice`, `SHOP.wholesaleThreshold`: parámetros centralizados de las tarifas de venta.
+- El precio anterior de **$3.000 COP** del aviso histórico fue sustituido por las tarifas actuales de **$2.500 y $2.000 al por mayor**.
 
 **2.** Confirmar y ajustar: recogida/domicilios, cobertura, recargos, antelación y franjas horarias, medios de pago, fotos reales, privacidad y teléfonos de contacto.
 
@@ -86,7 +86,7 @@ No necesitas instalar dependencias.
 
 ## Identidad visual
 
-Referencia: aviso de Canva «Bolis Gourmet». Se reutilizaron **#FFC8C5** (rosa) y **#7FC6C2** (verde agua), con una paleta crema y tipografía suave. Las ilustraciones SVG son originales de esta versión (no fotografías de producto).
+Referencia: aviso de Canva «Bolis Gourmet». Se reutilizaron **#FFC8C5** (rosa) y **#7FC6C2** (verde agua), con una paleta crema y tipografía suave. Las ilustraciones SVG de los bolis son originales (no fotografías de producto). Los cuatro diseños de capibara creados para la marca están incorporados como archivos WebP optimizados en `assets/branding/` y repartidos entre encabezado, portada, Nosotros y pie de página.
 
 - [Documentación del proyecto en Notion](https://app.notion.com/p/40760fb53673804181edc620cca28d86)
 - [Aviso original en Canva](https://www.canva.com/design/DAGOnTjzZAI/P7DlqAO2JHBAOiMWFeo-zA/edit)
