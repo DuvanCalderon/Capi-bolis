@@ -82,11 +82,10 @@ test("formato de precios en pesos colombianos", () => {
   assert.match(formatCOP(26000), /26\.000/);
 });
 
-test("Maracuyá usa la fotografía real y los demás sabores conservan ilustraciones", () => {
+test("Maracuyá mantiene su fotografía real", () => {
   const maracuya=PRODUCTS.find(p=>p.id==="maracuya");
   assert.equal(maracuya.image,"./assets/images/maracuya-real.webp");
   assert.ok(maracuya.imageAlt.includes("Foto real"));
-  assert.ok(PRODUCTS.filter(p=>p.id!=="maracuya").every(p=>!p.image));
 });
 
 test("Oreo, pie de limón y fresa tienen fotos reales optimizadas", () => {
