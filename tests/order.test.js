@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { validateOrder, buildOrderMessage, buildWhatsAppURL, PAYMENT_LABELS, todayLocalISO } from "../js/order.js";
+import { validateOrder, isRealISODate, buildOrderMessage, buildWhatsAppURL, PAYMENT_LABELS, todayLocalISO } from "../js/order.js";
 
 const lines = [{ id:"fresa",name:"Fresa suave",price:3000,quantity:2,subtotal:6000 }];
 const form = { name:"Luisa",phone:"300 123 4567",date:"2099-12-25",delivery:"domicilio",address:"Calle 123 # 45-67",payment:"por_acordar",notes:"Sin azúcar extra" };
@@ -36,4 +36,10 @@ test("WhatsApp codifica el mensaje y verifica el número",()=>{
 });
 test("fecha local ISO tiene formato válido",()=>{
  assert.equal(todayLocalISO(new Date(2026,10,19)),"2026-11-19");
+});
+
+test("no acepta fechas imposibles del calendario", () => {
+  assert.equal(isRealISODate("2099-02-31"), false);
+  assert.equal(isRealISODate("2099-02-28"), true);
+  assert.ok(validateOrder({ ...form, date:"2099-02-31" }, lines, "2026-01-01").date);
 });
