@@ -41,7 +41,7 @@ function visual(product) {
 function productCard(product) {
   const quantity = cart[product.id] || 0;
   return `<article class="product-card" style="--product-pale:${product.pale};--product-accent:${product.color}">
-    <div class="product-image${product.image ? " has-photo" : ""}">${product.image ? `<img class="product-photo" src="${product.image}" alt="${product.imageAlt || `Bolis sabor ${product.name}`}" loading="lazy" decoding="async" width="420" height="748" />` : visual(product)}<span class="product-tag">${product.tag}</span></div>
+    <div class="product-image${product.image ? " has-photo" : ""}${product.imageFrame === "framed" ? " photo-framed" : ""}" ${product.image ? `style="--photo-bg:url(\'${product.image}\')"` : ""}>${product.image ? `<img class="product-photo" src="${product.image}" alt="${product.imageAlt || `Bolis sabor ${product.name}`}" loading="lazy" decoding="async" width="${product.imageWidth || 420}" height="${product.imageHeight || 748}" />` : visual(product)}<span class="product-tag">${product.tag}</span></div>
     <div class="product-info">
       <span class="product-category">${product.category === "frutales" ? "Frutal" : "Cremoso"}</span>
       <h3>${product.name}</h3><p>${product.description}</p>

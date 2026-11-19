@@ -88,3 +88,18 @@ test("Maracuyá usa la fotografía real y los demás sabores conservan ilustraci
   assert.ok(maracuya.imageAlt.includes("Foto real"));
   assert.ok(PRODUCTS.filter(p=>p.id!=="maracuya").every(p=>!p.image));
 });
+
+test("Oreo, pie de limón y fresa tienen fotos reales optimizadas", () => {
+  const expected = {
+    oreo: "./assets/images/oreo-real.webp",
+    "pie-limon": "./assets/images/pie-limon-real.webp",
+    fresa: "./assets/images/fresa-real.webp",
+  };
+  for (const [id, path] of Object.entries(expected)) {
+    const product = PRODUCTS.find(item => item.id === id);
+    assert.equal(product.image, path);
+    assert.equal(product.imageFrame, "framed");
+    assert.match(product.imageAlt, /Foto real/);
+  }
+  assert.ok(PRODUCTS.filter(p => !["maracuya", "oreo", "pie-limon", "fresa"].includes(p.id)).every(p => !p.image));
+});

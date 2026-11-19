@@ -340,7 +340,7 @@ dialog::backdrop{background:#23352dcc;backdrop-filter:blur(3px)}
   transform:none;
   border:0;
   border-radius:0;
-  background-image:url("../assets/images/maracuya-real.webp");
+  background-image:var(--photo-bg);
   background-size:cover;
   background-position:center 55%;
   filter:blur(22px);
@@ -366,4 +366,16 @@ dialog::backdrop{background:#23352dcc;backdrop-filter:blur(3px)}
   position:absolute;
   z-index:2;
   background:rgba(255,250,246,.93);
+}
+
+/* Fotos originales de Oreo, pie de limón y fresa: recorte previo solo de espacio
+   vacío, y encuadre "contain" para ver los bolis completos sin alterar colores. */
+.product-image.photo-framed .product-photo {
+  left: 0;
+  top: 0;
+  transform: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
 }
