@@ -1,0 +1,10 @@
+{
+  "name": "capi-bolis",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "description": "MVP estático de Capi Bolis con catálogo y pedidos por WhatsApp"
+}
